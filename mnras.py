@@ -48,7 +48,12 @@ for i in auth_df.Order:
     affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df)-2)]].to_numpy(dtype='str')[0]
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
-    author_latex_line=[author_name,","]
+    if i==max(auth_df.Order)-1:
+        author_latex_line=[author_name]
+    elif i==max(auth_df.Order):
+        author_latex_line=[author_name]
+    else:
+        author_latex_line=[author_name,","]
     for affil in affil_nonan:
         command = command_df.loc[command_df["Affiliation"]==affil,"Command"].item()
         slash_com = "\{}".format(command)
@@ -57,6 +62,9 @@ for i in auth_df.Order:
     author_latex_line = author_latex_line[:-1]
     author_latex_line.append("\\\n")
     output_file.write(''.join(author_latex_line))
+
+    if i==max(auth_df.Order)-1:
+        output_file.write("and\n")
 
 output_file.write("\\\\\n\n")
 

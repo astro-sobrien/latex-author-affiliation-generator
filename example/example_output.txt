@@ -1,0 +1,23 @@
+%Copy this into the pre-amble
+\newcommand{\das}{$^1$}
+\newcommand{\aul}{$^2$}
+\newcommand{\gcc}{$^3$}
+\newcommand{\tru}{$^4$}
+\newcommand{\cco}{$^5$}
+\newcommand{\uml}{$^6$}
+
+%Copy this into the author list
+Sean M. O'Brien,\das$^,$\aul$^,$\gcc\
+Aaron A. Aaronson,\das$^,$\aul\
+Jane Bloggs,\tru\
+Homer \'{A}ccented-Surname,\cco\
+John Realman,\uml$^,$\gcc\
+\\
+
+%Copy this into the list of institutions
+\das Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK\\
+\aul Centre for Author Lists, University of LaTeX, AB12 3CD, UK\\
+\gcc Greendale Community College, Greendale, CO, USA\\
+\tru Totally Real University, Citytown, Country\\
+\cco City College, Greendale, CO, USA\\
+\uml {\"U}mlaut University, Allentown, Country\\

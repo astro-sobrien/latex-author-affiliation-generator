@@ -7,7 +7,8 @@ Set the order of authors in the 'Order' column of this first sheet, you don't ne
 
 In the Commands_Affiliations sheet, set the shorthand commands (I suggest three letter codes, but there's no restrictions) for each unique affiliation. Be careful not to define an already common/previously defined LaTeX command). If the spreadsheet is working properly it should have identified all the unique affiliations. Be sure to check the Google Sheet command is searching the full list of affiliations:
 
-The command in cell B2 by default is `=UNIQUE(FILTER(FLATTEN(Authors_Affiliations!C2:E6),FLATTEN(Authors_Affiliations!C2:E6)<>""))`
+The command in cell B2 by default is `=UNIQUE(FILTER(FLATTEN(Authors_Affiliations!C2:E6),FLATTEN(Authors_Affiliations!C2:E6)<>""))`.
+
 This means it is searching the range `C2:E6` of the first sheet, flattenning it into a list, removing blanks (the `FILTER` command) and then finding the unique entries. You should only need to change the `E6` in both parts of this command depending on the number of affiliation columns and number of authors.
 
 Next, export BOTH sheets as .tsv files. **Important** .csv files WILL NOT WORK, the commas in affiliation addresses make this not viable.

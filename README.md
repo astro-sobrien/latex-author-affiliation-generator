@@ -1,6 +1,8 @@
 # latex-author-affiliation-generator
 Tools for collecting author names and affiliations, setting the order and generating required LaTeX
 
+Requires numpy, pandas.
+
 Input author names and affiliations into the spreadsheet `author-affiliation-sheet.xlsx` (including LaTeX-specific characters such as `Homer \'{A}ccented-Surname` for an accented A). Preferably import the sheet into a Google Sheet first so it can be shared with collaborators who can input their information themselves.
 
 Set the order of authors in the 'Order' column of this first sheet, you don't need to sort the list as the Python script will handle this.

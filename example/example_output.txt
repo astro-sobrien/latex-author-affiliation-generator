@@ -6,14 +6,16 @@
 \newcommand{\air}{$^5$}
 \newcommand{\uml}{$^6$}
 \newcommand{\cco}{$^7$}
+\newcommand{\spr}{$^8$}
 
 %Copy this into the author list
-Sean M. O'Brien,\das$^,$\aul$^,$\gcc\
+Sean M. O'Brien,\das$^,$\aul$^,$\gcc\thanks{E-mail: name@university.ac.uk}
 Aaron A. Aaronson,\das$^,$\aul\
 Leslie Knope,\ind\
-Troy Barnes\gcc$^,$\air\
-and
+Troy Barnes,\gcc$^,$\air\
 Ren\'{e} Artois\uml$^,$\cco\
+and
+Lisa Simpson\spr\
 \\
 
 %Copy this into the list of institutions
@@ -24,3 +26,4 @@ Ren\'{e} Artois\uml$^,$\cco\
 \air Greendale Air Conditioning Repair School, Greendale Community College, Greendale, CO, USA\\
 \uml {\"U}mlaut University, City, Country\\
 \cco City College, Greendale, CO, USA\\
+\spr Springfield Elementary School, Springfield, State, USA\\

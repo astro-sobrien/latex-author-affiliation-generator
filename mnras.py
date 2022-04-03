@@ -21,7 +21,7 @@ auth_df = auth_df.sort_values('Order')
 affil_order_full = []
 for i in auth_df.Order:
     author_name = auth_df.loc[auth_df['Order']==i,'Name'].item()
-    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df)-2)]].to_numpy(dtype='str')[0]
+    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-3)]].to_numpy(dtype='str')[0]
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
     for affil in affil_nonan:
@@ -45,12 +45,10 @@ print("Creating author list")
 output_file.write("%Copy this into the author list\n")
 for i in auth_df.Order:
     author_name = auth_df.loc[auth_df['Order']==i,'Name'].item()
-    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df)-2)]].to_numpy(dtype='str')[0]
+    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-3)]].to_numpy(dtype='str')[0]
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
-    if i==max(auth_df.Order)-1:
-        author_latex_line=[author_name]
-    elif i==max(auth_df.Order):
+    if i>=max(auth_df.Order)-1:
         author_latex_line=[author_name]
     else:
         author_latex_line=[author_name,","]
@@ -60,7 +58,10 @@ for i in auth_df.Order:
         author_latex_line.append(slash_com)
         author_latex_line.append("$^,$")
     author_latex_line = author_latex_line[:-1]
-    author_latex_line.append("\\\n")
+    if i==1:
+        author_latex_line.append("\\thanks{E-mail: "+auth_df.loc[auth_df["Order"]==1,'Email'].item()+"}\n")
+    else:
+        author_latex_line.append("\\\n")
     output_file.write(''.join(author_latex_line))
 
     if i==max(auth_df.Order)-1:

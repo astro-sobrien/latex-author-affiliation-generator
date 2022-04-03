@@ -10,8 +10,8 @@ parser.add_argument('-O','--output',required=True,type=str,help='Relative file p
 
 args = parser.parse_args()
 
-auth_df = pd.read_csv(args.authors,sep='\t')
-command_df = pd.read_csv(args.commands,sep='\t')
+auth_df = pd.read_csv(args.authors,sep='\t',skiprows=3)
+command_df = pd.read_csv(args.commands,sep='\t',skiprows=3)
 
 output_path = args.output
 

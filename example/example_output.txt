@@ -8,7 +8,8 @@
 \newcommand{\cco}{$^7$}
 \newcommand{\spr}{$^8$}
 
-%Copy this into the author list
+%Author list, replaces full author[]{} section
+\author[S. M. O'Brien et al.]{
 Sean M. O'Brien,\das$^,$\aul$^,$\gcc\thanks{E-mail: name@university.ac.uk}
 Aaron A. Aaronson,\das$^,$\aul\
 Leslie Knope,\ind\
@@ -18,7 +19,7 @@ and
 Lisa Simpson\spr\
 \\
 
-%Copy this into the list of institutions
+%List of institutions
 \das Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK\\
 \aul Centre for Author Lists, University of LaTeX, AB12 3CD, UK\\
 \gcc Greendale Community College, Greendale, CO, USA\\
@@ -27,3 +28,4 @@ Lisa Simpson\spr\
 \uml {\"U}mlaut University, City, Country\\
 \cco City College, Greendale, CO, USA\\
 \spr Springfield Elementary School, Springfield, State, USA\\
+}

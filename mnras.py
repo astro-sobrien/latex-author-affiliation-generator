@@ -42,7 +42,13 @@ for i in range(len(affil_ordered)):
 
 output_file.write("\n")
 print("Creating author list")
-output_file.write("%Copy this into the author list\n")
+output_file.write("%Author list, replaces full author[]{} section\n")
+
+output_file.write("\\author[")
+first_author = auth_df.loc[auth_df["Order"]==1,'Name'].item()
+fap_listed = first_author.split(" ")
+output_file.write(fap_listed[0][0]+". "+' '.join(fap_listed[1:])+" et al.]{\n")
+
 for i in auth_df.Order:
     author_name = auth_df.loc[auth_df['Order']==i,'Name'].item()
     affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-3)]].to_numpy(dtype='str')[0]
@@ -70,9 +76,10 @@ for i in auth_df.Order:
 output_file.write("\\\\\n\n")
 
 print("Creating list of institutions")
-output_file.write("%Copy this into the list of institutions\n")
+output_file.write("%List of institutions\n")
 for i in range(len(affil_ordered)):
     command = command_df.loc[command_df['Affiliation']==affil_ordered[i],'Command'].item()
     output_file.write("\\"+command+" "+affil_ordered[i]+"\\\\\n")
 
+output_file.write("}")
 output_file.close()

@@ -70,6 +70,9 @@ for i in auth_df.Order:
         author_latex_line.append("\\\n")
     output_file.write(''.join(author_latex_line))
 
+    if i%5==0:
+        output_file.write("\\newauthor\n")
+
     if i==max(auth_df.Order)-1:
         output_file.write("and\n")
 

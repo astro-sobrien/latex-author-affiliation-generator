@@ -15,6 +15,7 @@ Aaron A. Aaronson,\das$^,$\aul\
 Leslie Knope,\ind\
 Troy Barnes,\gcc$^,$\air\
 Ren\'{e} Artois\uml$^,$\cco\
+\newauthor
 and
 Lisa Simpson\spr\
 \\

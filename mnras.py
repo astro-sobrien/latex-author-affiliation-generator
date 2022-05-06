@@ -15,13 +15,28 @@ command_df = pd.read_csv(args.commands,sep='\t',skiprows=3)
 
 output_path = args.output
 
+print('Setting author order')
+alpha_lastnames = sorted(auth_df.loc[np.isnan(auth_df['Order']),'Last Name'])
+repeated_lastnames = set([x for x in alpha_lastnames if alpha_lastnames.count(x)>1])
+unique_lastnames = sorted(np.unique(alpha_lastnames))
+
+order_count = max(auth_df.Order)+1
+for lname in unique_lastnames:
+    if lname in repeated_lastnames:
+        alpha_firstnames = sorted(auth_df.loc[auth_df['Last Name']==lname,'First Name(s)'])
+        for fname in alpha_firstnames:
+            auth_df.loc[(auth_df['Last Name']==lname) & (auth_df['First Name(s)']==fname),'Order']=order_count
+            order_count += 1
+    else:
+        auth_df.loc[auth_df['Last Name']==lname,'Order']=order_count
+        order_count += 1
+
 print('Ordering affiliations')
 auth_df = auth_df.sort_values('Order')
 
 affil_order_full = []
 for i in auth_df.Order:
-    author_name = auth_df.loc[auth_df['Order']==i,'Name'].item()
-    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-3)]].to_numpy(dtype='str')[0]
+    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-4)]].to_numpy(dtype='str')[0]
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
     for affil in affil_nonan:
@@ -45,13 +60,13 @@ print("Creating author list")
 output_file.write("%Author list, replaces full author[]{} section\n")
 
 output_file.write("\\author[")
-first_author = auth_df.loc[auth_df["Order"]==1,'Name'].item()
+first_author = auth_df.loc[auth_df["Order"]==1,'First Name(s)'].item() +' '+ auth_df.loc[auth_df["Order"]==1,'Last Name'].item()
 fap_listed = first_author.split(" ")
 output_file.write(fap_listed[0][0]+". "+' '.join(fap_listed[1:])+" et al.]{\n")
 
 for i in auth_df.Order:
-    author_name = auth_df.loc[auth_df['Order']==i,'Name'].item()
-    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-3)]].to_numpy(dtype='str')[0]
+    author_name = auth_df.loc[auth_df["Order"]==i,'First Name(s)'].item() +' '+ auth_df.loc[auth_df["Order"]==i,'Last Name'].item()
+    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-4)]].to_numpy(dtype='str')[0]
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
     if i>=max(auth_df.Order)-1:
@@ -76,7 +91,7 @@ for i in auth_df.Order:
     if i==max(auth_df.Order)-1:
         output_file.write("and\n")
 
-output_file.write("\\\\\n\n")
+output_file.write("\\\\\n")
 
 print("Creating list of institutions")
 output_file.write("%List of institutions\n")

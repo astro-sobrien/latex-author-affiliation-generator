@@ -14,12 +14,23 @@ Sean M. O'Brien,\das$^,$\aul$^,$\gcc\thanks{E-mail: name@university.ac.uk}
 Aaron A. Aaronson,\das$^,$\aul\
 Leslie Knope,\ind\
 Troy Barnes,\gcc$^,$\air\
-Ren\'{e} Artois\uml$^,$\cco\
+Ren\'{e} Artois,\uml$^,$\cco\
+\newauthor
+Shirley Bennett,\gcc\
+Annie Edison,\gcc\
+Sherri Mackleberry,\spr\
+Terri Mackleberry,\spr\
+Nelson Muntz,\spr\
+\newauthor
+Abed Nadir,\gcc\
+Craig Pelton,\gcc\
+Britta Perry,\gcc\
+Bart Simpson,\spr\
+Lisa Simpson\spr\
 \newauthor
 and
-Lisa Simpson\spr\
+Jeff Winger\gcc\
 \\
-
 %List of institutions
 \das Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK\\
 \aul Centre for Author Lists, University of LaTeX, AB12 3CD, UK\\

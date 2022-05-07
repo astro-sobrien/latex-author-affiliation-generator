@@ -6,6 +6,7 @@ Requires numpy, pandas.
 Input author names and affiliations into the spreadsheet `author-affiliation-example.xlsx` (including LaTeX-specific characters such as `Ren\'{e} Artois` for an accented e). Preferably import the sheet into a Google Sheet first so it can be shared with collaborators who can input their information themselves.
 
 Set the order of authors in the 'Order' column of this first sheet, you don't need to sort the list as the Python script will handle this.
+Any author with a blank 'Order' will be automatically ordered in the alphabetical section of the author list
 
 In the Commands_Affiliations sheet, set the shorthand commands (I suggest three letter codes, but there's no restrictions) for each unique affiliation. Be careful not to define an already common/previously defined LaTeX command). If the spreadsheet is working properly it should have identified all the unique affiliations. Be sure to check the Google Sheet command is searching the full list of affiliations:
 

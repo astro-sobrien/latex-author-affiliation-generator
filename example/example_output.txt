@@ -1,4 +1,11 @@
 %Copy this into the pre-amble
+%For ORCIDs
+\usepackage{xcolor}
+\usepackage{hyperref}
+\newcommand{\orc}{$^{\includegraphics[height=\fontcharht\font`A]{figures/orcidlogo.pdf}}$}
+\newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\orc}}
+
+%For affiliation commands
 \newcommand{\das}{$^1$}
 \newcommand{\aul}{$^2$}
 \newcommand{\gcc}{$^3$}
@@ -10,7 +17,7 @@
 
 %Author list, replaces full author[]{} section
 \author[S. M. O'Brien et al.]{
-Sean M. O'Brien,\das$^,$\aul$^,$\gcc\thanks{E-mail: name@university.ac.uk}
+Sean M. O'Brien\orcid{0000-0001-7367-1188},\das$^,$\aul$^,$\gcc\thanks{E-mail: name@university.ac.uk}
 Aaron A. Aaronson,\das$^,$\aul\
 Leslie Knope,\ind\
 Troy Barnes,\gcc$^,$\air\

@@ -7,6 +7,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-A','--authors',required=True,type=str,help='Relative file path to Authors_Affiliations.tsv')
 parser.add_argument('-C','--commands',required=True,type=str,help='Relative file path to Commands_Affiliations.tsv')
 parser.add_argument('-O','--output',required=True,type=str,help='Relative file path to output file you wish to write to (include .txt)')
+parser.add_argument('--orcid',action='store_true',help="Include this argument if you wish to include ORCIDs")
 
 args = parser.parse_args()
 
@@ -36,7 +37,7 @@ auth_df = auth_df.sort_values('Order')
 
 affil_order_full = []
 for i in auth_df.Order:
-    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-4)]].to_numpy(dtype='str')[0]
+    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-5)]].to_numpy(dtype='str')[0]
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
     for affil in affil_nonan:
@@ -49,8 +50,14 @@ print(affil_ordered)
 
 output_file = open(output_path, 'w')
 
-print("Defining commands")
 output_file.write("%Copy this into the pre-amble\n")
+if args.orcid:
+    print("Including ORCID pre-amble")
+    output_file.writelines(["%For ORCIDs\n", "\\usepackage{xcolor}\n", "\\usepackage{hyperref}\n","\\newcommand{\\orc}{$^{\\includegraphics[height=\\fontcharht\\font`A]{figures/orcidlogo.pdf}}$}\n","\\newcommand{\\orcid}[1]{\\href{https://orcid.org/#1}{\\orc}}\n"])
+
+output_file.write("\n")
+print("Defining commands")
+output_file.write("%For affiliation commands\n")
 for i in range(len(affil_ordered)):
     command = command_df.loc[command_df['Affiliation']==affil_ordered[i],'Command'].item()
     output_file.write("\\newcommand{\\"+command+"}{$^"+str(i+1)+"$}\n")
@@ -66,13 +73,26 @@ output_file.write(fap_listed[0][0]+". "+' '.join(fap_listed[1:])+" et al.]{\n")
 
 for i in auth_df.Order:
     author_name = auth_df.loc[auth_df["Order"]==i,'First Name(s)'].item() +' '+ auth_df.loc[auth_df["Order"]==i,'Last Name'].item()
-    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-4)]].to_numpy(dtype='str')[0]
+    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-5)]].to_numpy(dtype='str')[0]
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
-    if i>=max(auth_df.Order)-1:
-        author_latex_line=[author_name]
+    if args.orcid:
+            orcid_id = auth_df.loc[auth_df["Order"]==i,"ORCID"].item()
+            if pd.isna(orcid_id):
+                if i>=max(auth_df.Order)-1:
+                    author_latex_line=[author_name]
+                else:
+                    author_latex_line=[author_name,","]
+            else:
+                if i>=max(auth_df.Order)-1:
+                    author_latex_line=[author_name,"\\orcid{"+orcid_id+"}"]
+                else:
+                    author_latex_line=[author_name,"\\orcid{"+orcid_id+"}",","] 
     else:
-        author_latex_line=[author_name,","]
+        if i>=max(auth_df.Order)-1:
+            author_latex_line=[author_name]
+        else:
+            author_latex_line=[author_name,","]
     for affil in affil_nonan:
         command = command_df.loc[command_df["Affiliation"]==affil,"Command"].item()
         slash_com = "\{}".format(command)

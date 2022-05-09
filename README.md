@@ -29,5 +29,5 @@ Finally, copy the relevant sections of example_output.txt into your LaTeX file. 
 
 
 ### Acknowledgments
-Thank you to Matt Green for sharing the initial trick for making changes to affiliation numbers easy to deal with.
+Thank you to Matt Green for sharing the trick for making changes to affiliation numbers easy to deal with.
 Thank you to Ed Bryant for sharing the commands used to add ORCIDs to the author list.

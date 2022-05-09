@@ -24,3 +24,10 @@ Additionally, you can include author's ORCIDs by adding the `--orcid` argument. 
 In the example, I ran the command `python mnras.py -A "example/author-affiliation-example - Authors_Affiliations.tsv" -C "example/author-affiliation-example - Commands_Affiliations.tsv" -O example/example_output.txt --orcid` to generate example_output.txt.
 
 Finally, copy the relevant sections of example_output.txt into your LaTeX file. In the case of MNRAS, the first block of commands are placed with the other command definitions. The full author and affiliation command, wrapped in `\author{}`, is generated
+
+
+
+
+### Acknowledgments
+Thank you to Matt Green for sharing the initial trick for making changes to affiliation numbers easy to deal with.
+Thank you to Ed Bryant for sharing the commands used to add ORCIDs to the author list.

@@ -1,6 +1,8 @@
 Enter names/affiliations as they should be written in LaTeX, e.g. Ren\'{e} for René							
 Additional affiliation columns can be added							
-Order for first n authors can be set and changed whenever, the list does NOT need to be sorted. Any author with Order left blank will be sorted automatically in the alphabetical section of the author list							
+Order for first n authors can be set and changed whenever, the list does NOT need to be sorted.							
+Any author with Order left blank will be sorted automatically in the alphabetical section of the author list							
+Check out: https://github.com/astro-sobrien/latex-author-affiliation-generator							
 Order	First Name(s)	Last Name	Email	ORCID	Affiliation 1	Affiliation 2	Affiliation 3
 1	Sean M.	O'Brien	name@university.ac.uk	0000-0001-7367-1188	Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK	Centre for Author Lists, University of LaTeX, AB12 3CD, UK	Greendale Community College, Greendale, CO, USA
 2	Aaron A.	Aaronson			Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK	Centre for Author Lists, University of LaTeX, AB12 3CD, UK	

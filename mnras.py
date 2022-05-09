@@ -76,18 +76,12 @@ for i in auth_df.Order:
     affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-5)]].to_numpy(dtype='str')[0]
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
-    if args.orcid:
-            orcid_id = auth_df.loc[auth_df["Order"]==i,"ORCID"].item()
-            if pd.isna(orcid_id):
-                if i>=max(auth_df.Order)-1:
-                    author_latex_line=[author_name]
-                else:
-                    author_latex_line=[author_name,","]
-            else:
-                if i>=max(auth_df.Order)-1:
-                    author_latex_line=[author_name,"\\orcid{"+orcid_id+"}"]
-                else:
-                    author_latex_line=[author_name,"\\orcid{"+orcid_id+"}",","] 
+    orcid_id = auth_df.loc[auth_df["Order"]==i,"ORCID"].item()
+    if args.orcid and not pd.isna(orcid_id):
+        if i>=max(auth_df.Order)-1:
+            author_latex_line=[author_name,"\\orcid{"+orcid_id+"}"]
+        else:
+            author_latex_line=[author_name,"\\orcid{"+orcid_id+"}",","]
     else:
         if i>=max(auth_df.Order)-1:
             author_latex_line=[author_name]

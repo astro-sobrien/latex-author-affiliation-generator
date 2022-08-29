@@ -88,7 +88,7 @@ for i in auth_df.Order:
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
 
-    # Includes ORCID is applicable
+    # Includes ORCID if applicable
     orcid_id = auth_df.loc[auth_df["Order"]==i,"ORCID"].item()
     if args.orcid and not pd.isna(orcid_id):
         if i>=max(auth_df.Order)-1:

@@ -1,7 +1,8 @@
 # latex-author-affiliation-generator
-Tools for collecting author names and affiliations, setting the order and generating required LaTeX
+Tools for collecting author names and affiliations, setting the order and generating required LaTeX for various journal templates
 
 Requires numpy, pandas.
+Compatible with MNRAS v3.0; AAS v6.3.1
 
 Input author names and affiliations into the spreadsheet `author-affiliation-example.xlsx` (including LaTeX-specific characters such as `Ren\'{e} Artois` for an accented e). Preferably import the sheet into a Google Sheet first so it can be shared with collaborators who can input their information themselves.
 

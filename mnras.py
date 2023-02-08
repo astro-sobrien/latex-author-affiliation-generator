@@ -12,8 +12,8 @@ parser.add_argument('--orcid',action='store_true',help="Include this argument if
 args = parser.parse_args()
 
 # Read in tsv files, skipping rows containing the instructions
-auth_df = pd.read_csv(args.authors,sep='\t',skiprows=5)
-command_df = pd.read_csv(args.commands,sep='\t',skiprows=3)
+auth_df = pd.read_csv(args.authors,sep='\t', comment='#')
+command_df = pd.read_csv(args.commands,sep='\t', comment='#')
 
 output_path = args.output
 

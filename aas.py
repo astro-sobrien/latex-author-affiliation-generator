@@ -10,7 +10,7 @@ parser.add_argument('-O','--output',required=True,type=str,help='Relative file p
 args = parser.parse_args()
 
 # Read in tsv files, skipping rows containing the instructions
-auth_df = pd.read_csv(args.authors,sep='\t',skiprows=5)
+auth_df = pd.read_csv(args.authors,sep='\t',comment='#')
 
 output_path = args.output
 

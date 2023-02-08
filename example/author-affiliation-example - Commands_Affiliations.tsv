@@ -1,6 +1,6 @@
-Change the ranges searched in cell B4 so that the entire affiliation range is searched. Currently D5:F9	
-Ensure that none of the affiliations appear twice due to typos. Any typos must be fixed in the other sheet	
-Set the commands below. Three-letter codes are not mandatory, avoid using already defined LaTeX commands	
+# Change the ranges searched in cell B4 so that the entire affiliation range is searched. Currently D5:F9	
+# Ensure that none of the affiliations appear twice due to typos. Any typos must be fixed in the other sheet	
+# Set the commands below. Three-letter codes are not mandatory, avoid using already defined LaTeX commands	
 Command	Affiliation
 das	Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK
 aul	Centre for Author Lists, University of LaTeX, AB12 3CD, UK

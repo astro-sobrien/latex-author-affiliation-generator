@@ -48,3 +48,6 @@ Jeff Winger\gcc\
 \cco City College, Greendale, CO, USA\\
 \spr Springfield Elementary School, Springfield, State, USA\\
 }
+
+%Copy below into acknowledgements section
+SMO is supported by an STFC studentship.

@@ -41,10 +41,9 @@ print("Creating author list")
 output_file.write("%Author list. Paste below paper title\n")
 
 for i in auth_df.Order:
-    output_file.write("\n")
     # Finds author list and affiliations for each author, in order set by Order
     author_name = auth_df.loc[auth_df["Order"]==i,'First Name(s)'].item() +' '+ auth_df.loc[auth_df["Order"]==i,'Last Name'].item()
-    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-5)]].to_numpy(dtype='str')[0]
+    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-6)]].to_numpy(dtype='str')[0]
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
 
@@ -60,5 +59,13 @@ for i in auth_df.Order:
         author_latex_line.append(affil)
         author_latex_line.append(" \\\\}\n")
     output_file.write(''.join(author_latex_line))
+    output_file.write("\n")
+
+print("Appending acknowledgements")
+output_file.write("%Copy below into acknowledgements section\n")
+ack_arr = auth_df.Acknowledgements.to_numpy(dtype=str)
+ack_arr = ack_arr[~(ack_arr=='nan')]
+for i in ack_arr:
+    output_file.write("{}\n".format(i))
 
 output_file.close()

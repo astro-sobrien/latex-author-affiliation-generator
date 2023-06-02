@@ -43,7 +43,7 @@ auth_df = auth_df.sort_values('Order')
 affil_order_full = []
 for i in auth_df.Order:
     # list affiliations for each author, ignore nans (blank affiliation columns)
-    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-5)]].to_numpy(dtype='str')[0]
+    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-6)]].to_numpy(dtype='str')[0]
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
     for affil in affil_nonan:
@@ -84,7 +84,7 @@ output_file.write(fap_listed[0][0]+". "+' '.join(fap_listed[1:])+" et al.]{\n")
 for i in auth_df.Order:
     # Finds author list and affiliations for each author, in order set by Order
     author_name = auth_df.loc[auth_df["Order"]==i,'First Name(s)'].item() +' '+ auth_df.loc[auth_df["Order"]==i,'Last Name'].item()
-    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-5)]].to_numpy(dtype='str')[0]
+    affil_list = auth_df.loc[auth_df['Order']==i,["Affiliation {}".format(j+1) for j in range(len(auth_df.columns)-6)]].to_numpy(dtype='str')[0]
     bool_arr = affil_list!='nan'
     affil_nonan = affil_list[bool_arr]
 
@@ -134,5 +134,13 @@ for i in range(len(affil_ordered)):
     command = command_df.loc[command_df['Affiliation']==affil_ordered[i],'Command'].item()
     output_file.write("\\"+command+" "+affil_ordered[i]+"\\\\\n")
 
-output_file.write("}")
+output_file.write("}\n\n")
+
+print("Appending acknowledgements")
+output_file.write("%Copy below into acknowledgements section\n")
+ack_arr = auth_df.Acknowledgements.to_numpy(dtype=str)
+ack_arr = ack_arr[~(ack_arr=='nan')]
+for i in ack_arr:
+    output_file.write("{}\n".format(i))
+
 output_file.close()

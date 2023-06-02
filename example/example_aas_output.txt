@@ -1,5 +1,4 @@
 %Author list. Paste below paper title
-
 \author[0000-0001-7367-1188]{Sean M. O'Brien}
 \affiliation{Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK \\}
 \affiliation{Centre for Author Lists, University of LaTeX, AB12 3CD, UK \\}
@@ -52,3 +51,6 @@
 
 \author{Jeff Winger}
 \affiliation{Greendale Community College, Greendale, CO, USA \\}
+
+%Copy below into acknowledgements section
+SMO is supported by an STFC studentship.

@@ -5,12 +5,14 @@ import argparse
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-A','--authors',required=True,type=str,help='Relative file path to Authors_Affiliations.tsv')
+parser.add_argument('-C','--commands',required=True,type=str,help='Relative file path to Commands_Affiliations.tsv')
 parser.add_argument('-O','--output',required=True,type=str,help='Relative file path to output file you wish to write to (include .txt)')
 
 args = parser.parse_args()
 
 # Read in tsv files, skipping rows containing the instructions
 auth_df = pd.read_csv(args.authors,sep='\t',comment='#')
+command_df = pd.read_csv(args.commands,sep='\t', comment='#')
 
 output_path = args.output
 
@@ -37,6 +39,14 @@ auth_df = auth_df.sort_values('Order')
 
 output_file = open(output_path, 'w')
 
+# Defines affiliations commands
+print("Defining commands")
+output_file.write("%For affiliation commands\n")
+for i, row in command_df.iterrows():
+    output_file.write("\\newcommand{\\"+row.Command+"}{"+row.Affiliation+"}\n")
+
+output_file.write("\n")
+
 print("Creating author list")
 output_file.write("%Author list. Paste below paper title\n")
 
@@ -57,7 +67,7 @@ for i in auth_df.Order:
     for affil in affil_nonan:
         author_latex_line.append("\\affiliation{")
         author_latex_line.append(affil)
-        author_latex_line.append(" \\\\}\n")
+        author_latex_line.append("}\n")
     output_file.write(''.join(author_latex_line))
     output_file.write("\n")
 

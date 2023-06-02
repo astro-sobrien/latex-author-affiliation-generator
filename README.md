@@ -32,11 +32,11 @@ After setting the order as described above, export the author sheet as a **.tsv*
 
 Place the .tsv file wherever you want, I'd suggest the same folder as the .py file you will use to generate the LaTeX.
 
-The aas.py file requires two arguments in the command line, relative paths to: the Author_Affiliations.tsv file and the name of the file you with to create and write to.
+The aas.py file requires three arguments in the command line, relative paths to: the Author_Affiliations.tsv file, the Commands_Affiliations.tsv file and the name of the file you with to create and write to.
 
-In the example, I ran the command `python aas.py -A "example/author-affiliation-example - Authors_Affiliations.tsv" -O example/example_aas_output.txt` to generate example_aas_output.txt.
+In the example, I ran the command `python aas.py -A "example/author-affiliation-example - Authors_Affiliations.tsv" -C "example/author-affiliation-example - Commands_Affiliations.tsv" -O example/example_aas_output.txt` to generate example_aas_output.txt.
 
-Finally, copy the relevant sections of example_output.txt into your LaTeX file.
+Finally, copy the relevant sections of example_output.txt into your LaTeX file. (The command definitions go before begin document)
 
 
 

@@ -1,56 +1,66 @@
+%For affiliation commands
+\newcommand{\das}{Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK}
+\newcommand{\aul}{Centre for Author Lists, University of LaTeX, AB12 3CD, UK}
+\newcommand{\gcc}{Greendale Community College, Greendale, CO, USA}
+\newcommand{\ind}{Indiana University, Bloomington, IN, USA}
+\newcommand{\uml}{{\"U}mlaut University, City, Country}
+\newcommand{\cco}{City College, Greendale, CO, USA}
+\newcommand{\air}{Greendale Air Conditioning Repair School, Greendale Community College, Greendale, CO, USA}
+\newcommand{\spr}{Springfield Elementary School, Springfield, State, USA}
+
 %Author list. Paste below paper title
 \author[0000-0001-7367-1188]{Sean M. O'Brien}
-\affiliation{Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK \\}
-\affiliation{Centre for Author Lists, University of LaTeX, AB12 3CD, UK \\}
-\affiliation{Greendale Community College, Greendale, CO, USA \\}
+\affiliation{Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK}
+\affiliation{Centre for Author Lists, University of LaTeX, AB12 3CD, UK}
+\affiliation{Greendale Community College, Greendale, CO, USA}
 
 \author{Aaron A. Aaronson}
-\affiliation{Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK \\}
-\affiliation{Centre for Author Lists, University of LaTeX, AB12 3CD, UK \\}
+\affiliation{Department of Affiliation Scripts, University of LaTeX, AB12 3CD, UK}
+\affiliation{Centre for Author Lists, University of LaTeX, AB12 3CD, UK}
 
 \author{Leslie Knope}
-\affiliation{Indiana University, Bloomington, IN, USA \\}
+\affiliation{Indiana University, Bloomington, IN, USA}
 
 \author{Troy Barnes}
-\affiliation{Greendale Community College, Greendale, CO, USA \\}
-\affiliation{Greendale Air Conditioning Repair School, Greendale Community College, Greendale, CO, USA \\}
+\affiliation{Greendale Community College, Greendale, CO, USA}
+\affiliation{Greendale Air Conditioning Repair School, Greendale Community College, Greendale, CO, USA}
 
 \author{Ren\'{e} Artois}
-\affiliation{{\"U}mlaut University, City, Country \\}
-\affiliation{City College, Greendale, CO, USA \\}
+\affiliation{{\"U}mlaut University, City, Country}
+\affiliation{City College, Greendale, CO, USA}
 
 \author{Shirley Bennett}
-\affiliation{Greendale Community College, Greendale, CO, USA \\}
+\affiliation{Greendale Community College, Greendale, CO, USA}
 
 \author{Annie Edison}
-\affiliation{Greendale Community College, Greendale, CO, USA \\}
+\affiliation{Greendale Community College, Greendale, CO, USA}
 
 \author{Sherri Mackleberry}
-\affiliation{Springfield Elementary School, Springfield, State, USA \\}
+\affiliation{Springfield Elementary School, Springfield, State, USA}
 
 \author{Terri Mackleberry}
-\affiliation{Springfield Elementary School, Springfield, State, USA \\}
+\affiliation{Springfield Elementary School, Springfield, State, USA}
 
 \author{Nelson Muntz}
-\affiliation{Springfield Elementary School, Springfield, State, USA \\}
+\affiliation{Springfield Elementary School, Springfield, State, USA}
 
 \author{Abed Nadir}
-\affiliation{Greendale Community College, Greendale, CO, USA \\}
+\affiliation{Greendale Community College, Greendale, CO, USA}
 
 \author{Craig Pelton}
-\affiliation{Greendale Community College, Greendale, CO, USA \\}
+\affiliation{Greendale Community College, Greendale, CO, USA}
 
 \author{Britta Perry}
-\affiliation{Greendale Community College, Greendale, CO, USA \\}
+\affiliation{Greendale Community College, Greendale, CO, USA}
 
 \author{Bart Simpson}
-\affiliation{Springfield Elementary School, Springfield, State, USA \\}
+\affiliation{Springfield Elementary School, Springfield, State, USA}
 
 \author{Lisa Simpson}
-\affiliation{Springfield Elementary School, Springfield, State, USA \\}
+\affiliation{Springfield Elementary School, Springfield, State, USA}
 
 \author{Jeff Winger}
-\affiliation{Greendale Community College, Greendale, CO, USA \\}
+\affiliation{Greendale Community College, Greendale, CO, USA}
 
 %Copy below into acknowledgements section
 SMO is supported by an STFC studentship.

@@ -4,7 +4,7 @@ Tools for collecting author names and affiliations, setting the order and genera
 Requires numpy, pandas.
 Compatible with MNRAS v3.0; AAS v6.3.1
 
-Input author names and affiliations into the spreadsheet `author-affiliation-example.xlsx` (including LaTeX-specific characters such as `Ren\'{e} Artois` for an accented e). Preferably import the sheet into a Google Sheet first so it can be shared with collaborators who can input their information themselves.
+Input author names and affiliations into the spreadsheet `author-affiliation-example` (including LaTeX-specific characters such as `Ren\'{e} Artois` for an accented e). You can make your own copy (File > Make a copy) in Google Sheets at [this link](https://docs.google.com/spreadsheets/d/1AEJyCyGI3vdjjR809VfnYeJul4L6XAJJeClrAsBunsE/edit?usp=sharing).
 
 Set the order of authors in the 'Order' column of this first sheet, you don't need to sort the list as the Python script will handle this.
 Any author with a blank 'Order' will be automatically ordered in the alphabetical section of the author list.
@@ -28,7 +28,12 @@ In the example, I ran the command `python mnras.py -A "example/author-affiliatio
 Finally, copy the relevant sections of example_mnras_output.txt into your LaTeX file. In the case of MNRAS, the first block of commands are placed with the other command definitions. The full author and affiliation command, wrapped in `\author{}`, is generated
 
 ### If using aas.py:
-After setting the order as described above, export the author sheet as a **.tsv** file. **Important** .csv files WILL NOT WORK, the commas in affiliation addresses make this not viable (or maybe they do, but .tsv is safer and it's how the code is setup).
+In the Commands_Affiliations sheet, set the shorthand commands (I suggest three letter codes, but there's no restrictions) for each unique affiliation. Be careful not to define an already common/previously defined LaTeX command). If the spreadsheet is working properly it should have identified all the unique affiliations. Be sure to check the Google Sheet command is searching the full list of affiliations:
+
+* The command in cell B2 by default is `=UNIQUE(FILTER(FLATTEN(Authors_Affiliations!F5:H20),FLATTEN(Authors_Affiliations!F5:H20)<>""))`.
+This means it is searching the range `F5:H20` of the first sheet, flattenning it into a list, removing blanks (the `FILTER` command) and then finding the unique entries. You should only need to change the `H20` in both parts of this command depending on the number of affiliation columns and number of authors.
+
+Next, export BOTH sheets as **.tsv** files. **Important** .csv files WILL NOT WORK, the commas in affiliation addresses make this not viable (or maybe they do, but .tsv is safer and it's how the code is setup).
 
 Place the .tsv file wherever you want, I'd suggest the same folder as the .py file you will use to generate the LaTeX.
 
@@ -36,7 +41,7 @@ The aas.py file requires three arguments in the command line, relative paths to:
 
 In the example, I ran the command `python aas.py -A "example/author-affiliation-example - Authors_Affiliations.tsv" -C "example/author-affiliation-example - Commands_Affiliations.tsv" -O example/example_aas_output.txt` to generate example_aas_output.txt.
 
-Finally, copy the relevant sections of example_output.txt into your LaTeX file. (The command definitions go before begin document)
+Finally, copy the relevant sections of example_output.txt into your LaTeX file. (The command definitions go before the begin document command in LaTeX)
 
 
 

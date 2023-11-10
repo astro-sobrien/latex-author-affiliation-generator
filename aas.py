@@ -65,9 +65,15 @@ for i in auth_df.Order:
         author_latex_line = ["\\author[",orcid_id,"]{",author_name,"}","\n"]
     # Appends each affiliation for each author
     for affil in affil_nonan:
+        command = command_df.loc[command_df["Affiliation"]==affil,"Command"].item()
+        slash_com = "\{}".format(command)
         author_latex_line.append("\\affiliation{")
-        author_latex_line.append(affil)
+        author_latex_line.append(slash_com)
         author_latex_line.append("}\n")
+    # for affil in affil_nonan:
+    #     author_latex_line.append("\\affiliation{")
+    #     author_latex_line.append(affil)
+    #     author_latex_line.append("}\n")
     output_file.write(''.join(author_latex_line))
     output_file.write("\n")
 
